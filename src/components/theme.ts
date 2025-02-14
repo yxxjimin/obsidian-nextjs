@@ -2,16 +2,16 @@ import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 const customConfig = defineConfig({
   globalCss: {
-    ":root": {
-      "--sh-class": "#2d5e9d",
-      "--sh-identifier": "#354150",
-      "--sh-sign": "#8996a3",
-      "--sh-property": "#0550ae",
-      "--sh-entity": "#249a97",
-      "--sh-jsxliterals": "#6266d1",
-      "--sh-string": "#00a99a",
-      "--sh-keyword": "#f47067",
-      "--sh-comment": "#a19595",
+    "pre": {
+      fontFamily: ["Fira Code", "Fira Mono", "Menlo", "Consolas", "DejaVu Sans Mono", "monospace"],
+      fontSize: "0.9rem",
+      backgroundColor: "hsl(230, 1%, 98%) !important",
+      whiteSpace: "pre",
+      wordBreak: "normal",
+      padding: "1em",
+      margin: "1em 0",
+      overflow: "auto",
+      borderRadius: "0.5em",
     },
     "code:not(:is(pre *))": {
       whiteSpace: "normal",

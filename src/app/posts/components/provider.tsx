@@ -1,7 +1,7 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import components from "@/app/posts/components/mdx";
 import remarkGfm from "remark-gfm";
-import highlight from "remark-sugar-high";
+import rehypeShiki from "@shikijs/rehype";
 
 export default async function MDXProvider({ content }: { content: string | undefined }) {
   return (
@@ -11,7 +11,18 @@ export default async function MDXProvider({ content }: { content: string | undef
         mdxOptions: {
           remarkPlugins: [
             remarkGfm,
-            highlight,
+          ],
+          rehypePlugins: [
+            [
+              rehypeShiki, 
+              { 
+                themes: {
+                  light: "github-light",
+                  dark: "github-dark",
+                },
+                skipLanguages: [],
+              }
+            ],
           ],
         },
       }}
