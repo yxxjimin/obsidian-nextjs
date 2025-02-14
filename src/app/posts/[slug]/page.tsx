@@ -1,7 +1,7 @@
-import { getAllPosts } from "@/app/notes/utils/parse";
+import { getAllPosts } from "@/app/posts/utils/parse";
 import { Box } from "@chakra-ui/react";
-import MarkdownRenderer from "@/app/notes/components/renderer";
-import MDXProvider from "@/app/notes/components/provider";
+import MarkdownRenderer from "@/app/posts/components/renderer";
+import MDXProvider from "@/app/posts/components/provider";
 
 interface Params {
   slug: string;
@@ -19,7 +19,7 @@ async function getPost(params: Params) {
   return getAllPosts().find((post) => post.metadata.slug === params.slug);
 }
 
-export default async function Note({ params }: { params: Params }) {
+export default async function Post({ params }: { params: Params }) {
   const post = await getPost(params);
 
   return (
