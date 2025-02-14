@@ -50,5 +50,5 @@ function getMDXData(dir: string) {
 }
 
 export function getAllPosts() {
-  return getMDXData(path.join(process.cwd(), "src", "app", "notes", "contents"));
+  return getMDXData(path.join(process.cwd(), process.env.CONTENTS_DIRECTORY || ""));
 }
