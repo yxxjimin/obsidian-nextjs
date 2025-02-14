@@ -9,7 +9,7 @@ export default function NoteLayout({ children }: { children: ReactNode }) {
       <ul>
         {getAllPosts().map((post) => (
           <li key={post.metadata.slug}>
-            <Link href={`/notes/${post.metadata.slug}`}>
+            <Link href={`/posts/${post.metadata.slug}`}>
               {post.metadata.title}
             </Link>
           </li>

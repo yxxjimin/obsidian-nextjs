@@ -1,12 +1,14 @@
 import {
   Box, 
+  Em, 
   Heading, 
   Image, 
-  Link, 
+  Span, 
   Text 
 } from "@chakra-ui/react";
 import React from 'react';
-import { Blockquote } from "@/components/ui/blockquote";
+import Callout from "@/components/ui/callout";
+import NextLink from "next/link";
 
 const components = {
   h1: (props: any) => <Heading as="h1" size="3xl" fontWeight={700} {...props} />,
@@ -25,8 +27,10 @@ const components = {
     ) {
       return childArray[0];
     }
-    return <Text fontSize={16} my="16px" lineHeight="1.7" {...props} />;
+    return <Text fontSize={16} my="1em" lineHeight="1.7" {...props} />;
   },
+
+  em: (props: any) => (<Em {...props} />),
 
   ul: (props: any) => (
     <ul
@@ -46,6 +50,7 @@ const components = {
         marginLeft: "1.5em",
         marginTop: "1em",
         marginBottom: "1em",
+        listStyleType: "decimal",
       }}
       {...props}
     />
@@ -57,7 +62,11 @@ const components = {
     </li>
   ),
 
-  a: (props: any) => <Link color="blue.500" fontWeight={600} {...props} />,
+  a: (props: any) => (
+    <Span color="blue.500" fontWeight={600}>
+      <NextLink {...props} />
+    </Span>
+  ),
 
   img: (props: any) => {
     let imageUrl = props.src;
@@ -81,9 +90,9 @@ const components = {
         />
         <Text
           as="figcaption"
-          fontSize="14px"
+          fontSize="0.8em"
           textAlign="center"
-          marginTop="16px"
+          marginTop="1em"
           color="gray.500"
         >
           {props.alt}
@@ -93,7 +102,7 @@ const components = {
   },
 
   blockquote: (props: any) => (
-    <Blockquote {...props} />
+    <Callout type="default" title="">{props.children}</Callout>
   ),
 };
 

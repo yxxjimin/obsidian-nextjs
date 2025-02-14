@@ -16,7 +16,6 @@ const customConfig = defineConfig({
     "code:not(:is(pre *))": {
       whiteSpace: "normal",
       color: "gray.900",
-      background: "white",
       fontWeight: "600",
       _after: {
         content: '"`"',
@@ -27,6 +26,22 @@ const customConfig = defineConfig({
       _dark: {
         color: "gray.50",
       }
+    },
+    "sup": {
+      _after: {
+        content: '"]"',
+      },
+      _before: {
+        content: '"["',
+      },
+      color: "blue.500",
+    },
+    ".footnotes": {
+      marginTop: "2em",
+      borderTop: "0.5px solid #30363d",
+    },
+    ".footnotes > h2": {
+      display: "none",
     },
   },
 });
