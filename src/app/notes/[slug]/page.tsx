@@ -1,23 +1,26 @@
 import { getAllPosts } from "@/app/notes/utils/parse";
 import { Box } from "@chakra-ui/react";
 import MarkdownRenderer from "@/app/notes/components/renderer";
-// import MDXProvider from "@/app/notes/components/provider";
+import MDXProvider from "@/app/notes/components/provider";
+
+interface Params {
+  slug: string;
+}
 
 export const dynamicParams = false
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<Params[]> {
   return getAllPosts().map((post) => ({
     slug: post.metadata.slug,
   }));
 }
 
-export default async function Note({ 
-  params 
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
-  const post = getAllPosts().find((post) => post.metadata.slug === slug);
+async function getPost(params: Params) {
+  return getAllPosts().find((post) => post.metadata.slug === params.slug);
+}
+
+export default async function Note({ params }: { params: Params }) {
+  const post = await getPost(params);
 
   return (
     <div>
@@ -30,8 +33,8 @@ export default async function Note({
         margin="50px auto"
         padding={50}
       >
-        {/* <MDXProvider source={post?.content} /> */}
-        <MarkdownRenderer content={post?.content} />
+        <MDXProvider content={post?.content} />
+        {/* <MarkdownRenderer content={post?.content} /> */}
       </Box>
       <div>
         <ul>

@@ -1,11 +1,16 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import components from "@/app/notes/components/mdx";
+import remarkGfm from 'remark-gfm';
 
-/** @deprecated Figure out some way to render GFM */
-export default async function MDXProvider({ source }: any) {
+export default async function MDXProvider({ content }: { content: string | undefined }) {
   return (
-    <MDXRemote
-      source={source}
+    <MDXRemote 
+      source={content || "No source"}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+      }}
       components={components}
     />
   );
