@@ -11,15 +11,15 @@ export default async function PostLayout({
 
   return (
     <Box
-      as={'div'}
-      display={'flex'}
-      bgColor={'white'}
-      width={'100%'}
+      as={"div"}
+      display={"flex"}
+      bgColor={"white"}
+      width={"100%"}
     >
       <Sidebar posts={posts} />
       <Box 
         as="main"
-        margin={"auto"}
+        marginX={"auto"}
         maxWidth={"48em"}
         overflowWrap={"break-word"}
       >

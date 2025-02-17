@@ -122,6 +122,7 @@ const components = {
           borderRadius={"lg"}
           src={imageUrl}
           alt={props.alt}
+          maxHeight={300}
         />
         <Text
           as="figcaption"
