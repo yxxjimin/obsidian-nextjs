@@ -17,7 +17,7 @@ export async function generateStaticParams(): Promise<Params[]> {
 }
 
 function getPost(params: Params) {
-  return getAllPosts().find((post) => post.metadata.slug === params.slug);
+  return getAllPosts().find((post) => encodeURI(post.metadata.slug) === params.slug);
 }
 
 export default async function Post({ params }: { params: Promise<Params> }) {

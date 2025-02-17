@@ -50,6 +50,7 @@ function getMDXData(dir: string): Post[] {
   return mdxFiles.map((file) => {
     const { metadata, content } = parseMDXFile(file);
     metadata.title = path.basename(file, path.extname(file));
+    metadata.slug = metadata.title.replace(/\s/g, '-').toLowerCase();
     return { metadata, content };
   });
 }
