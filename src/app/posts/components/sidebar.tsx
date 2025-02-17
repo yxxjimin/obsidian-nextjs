@@ -1,12 +1,13 @@
 "use client";
 
-import { Box, Input, List, Text } from "@chakra-ui/react";
+import { Box, Flex, Input, List, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Post } from "@/app/posts/utils/parse";
 import { useState } from "react";
 import { InputGroup } from "@/components/ui/input-group";
 import { LuSearch } from "react-icons/lu";
+import { FaGithub } from "react-icons/fa6";
 
 export default function Sidebar({ posts }: { posts: Post[]; }) {
   const regex = /^\/posts\/([^/]+)$/;
@@ -24,27 +25,41 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
       hideBelow={"lg"}
       bgColor={"gray.100"}
       width={250}
-      padding={"0.75rem"}
+      paddingX={"0.75rem"}
       height={"100vh"}
       position={"sticky"}
+      overflowY="auto"
       top={"0"}
       borderRightWidth={1}
       borderRightColor={"gray.200"}
     >
-      <Box>
-        <Link href={"/posts"}>
-          <Text 
-            textStyle={"xl"} 
-            fontWeight={"700"} 
-            fontFamily={"mono"}
-          >
-            ://yxxjimin
-          </Text>
-        </Link>
+      <Box 
+        position={"sticky"} 
+        top={"0"} 
+        bgColor={"gray.100"} 
+        paddingY={"0.75rem"}
+      >
+        <Flex 
+          direction={"row"} 
+          justifyContent={"space-between"} 
+          alignItems={"center"}
+        >
+          <Link href={"/posts"}>
+            <Text 
+              textStyle={"xl"} 
+              fontWeight={"700"} 
+              fontFamily={"mono"}
+            >
+              ://yxxjimin
+            </Text>
+          </Link>
+          <Link href={"https://github.com/yxxjimin"}>
+            <FaGithub size={25} />
+          </Link>
+        </Flex>
         <InputGroup
           width={"100%"}
           endElement={<LuSearch />}
-          marginBottom={"1em"}
         >
           <Input 
             variant={"flushed"} 
