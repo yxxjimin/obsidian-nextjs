@@ -14,6 +14,10 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
 
   const [search, setSearch] = useState<string>("");
 
+  const isMatchingSlug = (slug: string) => (
+    match[1] === encodeURI(slug)
+  );
+
   return (
     <Box
       as={"aside"}
@@ -59,20 +63,20 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
           .map((post) => (
             <List.Item key={post.metadata.slug}>
               <Box 
-                bgColor={match[1] === post.metadata.slug ? "black" : "none"} 
+                bgColor={isMatchingSlug(post.metadata.slug) ? "black" : "none"} 
                 borderRadius={"0.3em"}
                 width={"100%"} 
                 paddingY={"0.25em"}
                 paddingX={"0.5em"}
                 _hover={{
-                  bg: match[1] === post.metadata.slug ? "black" : "gray.200"
+                  bg: isMatchingSlug(post.metadata.slug) ? "black" : "gray.200"
                 }}
               >
                 <Link href={`/posts/${post.metadata.slug}`}>
                   <Text 
                     textStyle={"sm"} 
                     fontWeight={"500"} 
-                    color={match[1] === post.metadata.slug ? "white" : "black"}
+                    color={isMatchingSlug(post.metadata.slug) ? "white" : "black"}
                   >
                     {post.metadata.title}
                   </Text>
