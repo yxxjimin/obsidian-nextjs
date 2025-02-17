@@ -6,18 +6,43 @@ import {
   Span, 
   Text 
 } from "@chakra-ui/react";
-import React from 'react';
+import React, { JSX } from 'react';
 import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
 
 const components = {
-  h1: (props: any) => <Heading as="h1" size="3xl" fontWeight={700} {...props} />,
+  h1: (props: JSX.IntrinsicElements["h1"]) => (
+    <Heading 
+      as="h1" 
+      size="3xl" 
+      fontWeight={700} 
+      {...props} 
+    />
+  ),
 
-  h2: (props: any) => <Heading as="h2" size="2xl" fontWeight={700} marginTop="1em" marginBottom="1em" {...props} />,
+  h2: (props: JSX.IntrinsicElements["h2"]) => (
+    <Heading 
+      as="h2" 
+      size="2xl" 
+      fontWeight={700} 
+      marginTop="1em" 
+      marginBottom="1em" 
+      {...props} 
+    />
+  ),
 
-  h3: (props: any) => <Heading as="h3" size="xl" fontWeight={700} marginTop="1em" marginBottom="1em" {...props} />,
+  h3: (props: JSX.IntrinsicElements["h3"]) => (
+    <Heading 
+      as="h3"
+      size="xl" 
+      fontWeight={700} 
+      marginTop="1em" 
+      marginBottom="1em" 
+      {...props} 
+    />
+  ),
 
-  p: (props: any) => {
+  p: (props: JSX.IntrinsicElements["p"]) => {
     // Prevent wrapping <div> or images with <p>
     const { children } = props;
     const childArray = React.Children.toArray(children);
@@ -27,12 +52,21 @@ const components = {
     ) {
       return childArray[0];
     }
-    return <Text fontSize={16} my="1em" lineHeight="1.7" {...props} />;
+    return (
+      <Text 
+        fontSize={16} 
+        my="1em" 
+        lineHeight="1.7" 
+        {...props} 
+      />
+    );
   },
 
-  em: (props: any) => (<Em {...props} />),
+  em: (props: JSX.IntrinsicElements["em"]) => (
+    <Em {...props} />
+  ),
 
-  ul: (props: any) => (
+  ul: (props: JSX.IntrinsicElements["ul"]) => (
     <ul
       style={{
         marginLeft: "1.5em",
@@ -44,7 +78,7 @@ const components = {
     />
   ),
 
-  ol: (props: any) => (
+  ol: (props: JSX.IntrinsicElements["ol"]) => (
     <ol
       style={{
         marginLeft: "1.5em",
@@ -56,23 +90,23 @@ const components = {
     />
   ),
 
-  li: ({ node, children, ...props }: any) => (
+  li: ({ children, ...props }: JSX.IntrinsicElements["li"]) => (
     <li style={{ marginBottom: "1em" }} {...props}>
       {children}
     </li>
   ),
 
-  a: (props: any) => (
+  a: (props: JSX.IntrinsicElements["a"]) => (
     <Span color="blue.500" fontWeight={600}>
-      <NextLink {...props} />
+      <NextLink href={props.href || ""} />
     </Span>
   ),
 
-  img: (props: any) => {
+  img: (props: JSX.IntrinsicElements["img"]) => {
     let imageUrl = props.src;
-    if (props.src.startsWith(".")) {
+    if (props.src?.startsWith(".")) {
       const regex = /.*?(_static\/.+)/;
-      const match = props.src.match(regex);
+      const match = props.src.match(regex) || [];
       imageUrl = `/api/mdx-image?path=${encodeURIComponent(match[1])}`;
     }
     return (
@@ -84,9 +118,9 @@ const components = {
         alignItems="center"
       >
         <Image
-          {...props}
           borderRadius={"lg"}
           src={imageUrl}
+          alt={props.alt}
         />
         <Text
           as="figcaption"
@@ -101,7 +135,7 @@ const components = {
     );
   },
 
-  blockquote: (props: any) => (
+  blockquote: (props: JSX.IntrinsicElements["blockquote"]) => (
     <Callout type="default" title="">{props.children}</Callout>
   ),
 };
