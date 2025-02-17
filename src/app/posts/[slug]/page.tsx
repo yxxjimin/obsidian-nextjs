@@ -1,6 +1,6 @@
 import { getAllPosts } from "@/app/posts/utils/parse";
 import { Box } from "@chakra-ui/react";
-import MarkdownRenderer from "@/app/posts/components/renderer";
+// import MarkdownRenderer from "@/app/posts/components/renderer";
 import MDXProvider from "@/app/posts/components/provider";
 
 interface Params {
@@ -29,7 +29,7 @@ export default async function Post({ params }: { params: Params }) {
         as="main"
         display="flex"
         flexDirection="column"
-        maxWidth={900}
+        maxWidth={700}
         margin="50px auto"
         padding={50}
       >
