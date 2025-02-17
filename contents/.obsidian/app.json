@@ -1,0 +1,19 @@
+{
+  "promptDelete": false,
+  "newFileLocation": "folder",
+  "showLineNumber": true,
+  "vimMode": true,
+  "attachmentFolderPath": "/",
+  "livePreview": false,
+  "defaultViewMode": "preview",
+  "useTab": false,
+  "tabSize": 4,
+  "showIndentGuide": false,
+  "alwaysUpdateLinks": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  }
+}

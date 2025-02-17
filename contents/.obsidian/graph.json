@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": true,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    {
+      "query": "path:spring  ",
+      "color": {
+        "a": 1,
+        "rgb": 7124269
+      }
+    },
+    {
+      "query": "path:golang  ",
+      "color": {
+        "a": 1,
+        "rgb": 175576
+      }
+    },
+    {
+      "query": "[\"type\":note/cs]",
+      "color": {
+        "a": 1,
+        "rgb": 407163
+      }
+    },
+    {
+      "query": "path:java  ",
+      "color": {
+        "a": 1,
+        "rgb": 11498009
+      }
+    }
+  ],
+  "collapse-display": false,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": false,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 1.2360320620985286,
+  "close": true
+}
