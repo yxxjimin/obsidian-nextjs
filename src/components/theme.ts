@@ -4,7 +4,7 @@ const customConfig = defineConfig({
   globalCss: {
     "pre": {
       fontFamily: ["Fira Code", "Fira Mono", "Menlo", "Consolas", "DejaVu Sans Mono", "monospace"],
-      fontSize: "0.9rem",
+      fontSize: "0.8rem",
       backgroundColor: "hsl(230, 1%, 98%) !important",
       whiteSpace: "pre",
       wordBreak: "normal",

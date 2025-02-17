@@ -1,23 +1,30 @@
-import { ReactNode } from "react";
-import { getAllPosts } from "./utils/parse";
-import Link from "next/link";
+import { Box } from "@chakra-ui/react";
+import Sidebar from "@/app/posts/components/sidebar";
+import { getAllPosts } from "@/app/posts/utils/parse";
 
-export default function NoteLayout({ children }: { children: ReactNode }) {
+export default async function PostLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const posts = getAllPosts();
+
   return (
-    <div>
-      <h1>Hello This is the Layout!</h1>
-      <ul>
-        {getAllPosts().map((post) => (
-          <li key={post.metadata.slug}>
-            <Link href={`/posts/${post.metadata.slug}`}>
-              {post.metadata.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <div>
+    <Box
+      as={'div'}
+      display={'flex'}
+      bgColor={'white'}
+      width={'100%'}
+    >
+      <Sidebar posts={posts} />
+      <Box 
+        as="main"
+        margin={"auto"}
+        maxWidth={"48em"}
+        overflowWrap={"break-word"}
+      >
         {children}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }

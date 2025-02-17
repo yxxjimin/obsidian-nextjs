@@ -6,7 +6,7 @@ import {
   Span, 
   Text 
 } from "@chakra-ui/react";
-import React, { JSX } from 'react';
+import React, { ComponentProps, JSX } from 'react';
 import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
 
@@ -96,9 +96,10 @@ const components = {
     </li>
   ),
 
-  a: (props: JSX.IntrinsicElements["a"]) => (
+  a: (props: ComponentProps<typeof NextLink>) => (
+    // props of type `JSX.IntrinsicElements["li"]` will break the link
     <Span color="blue.500" fontWeight={600}>
-      <NextLink href={props.href || ""} />
+      <NextLink {...props} />
     </Span>
   ),
 
@@ -136,6 +137,7 @@ const components = {
   },
 
   blockquote: (props: JSX.IntrinsicElements["blockquote"]) => (
+    // TODO: max-width not working
     <Callout type="default" title="">{props.children}</Callout>
   ),
 };

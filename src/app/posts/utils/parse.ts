@@ -8,7 +8,12 @@ type Metadata = {
   lastmod: string;
   slug: string;
   tags?: string[];
-}
+};
+
+export type Post = {
+  metadata: Metadata;
+  content: string;
+};
 
 function parseFrontmatter(raw: string) {
   const pattern = /---\s*([\s\S]*?)\s*---/;
@@ -40,7 +45,7 @@ function getMDXFiles(dir: string): string[] {
     });
 }
 
-function getMDXData(dir: string) {
+function getMDXData(dir: string): Post[] {
   const mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     const { metadata, content } = parseMDXFile(file);
@@ -49,6 +54,6 @@ function getMDXData(dir: string) {
   });
 }
 
-export function getAllPosts() {
+export function getAllPosts(): Post[] {
   return getMDXData(path.join(process.cwd(), process.env.CONTENTS_DIRECTORY || ""));
 }
