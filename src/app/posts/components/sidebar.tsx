@@ -8,6 +8,7 @@ import { useState } from "react";
 import { InputGroup } from "@/components/ui/input-group";
 import { LuSearch } from "react-icons/lu";
 import { FaGithub } from "react-icons/fa6";
+import { colors } from "@/colors";
 
 export default function Sidebar({ posts }: { posts: Post[]; }) {
   const regex = /^\/posts\/([^/]+)$/;
@@ -23,7 +24,7 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
     <Box
       as={"aside"}
       hideBelow={"lg"}
-      bgColor={"gray.100"}
+      bgColor={colors.sidebar}
       width={250}
       paddingX={"0.75rem"}
       height={"100vh"}
@@ -31,12 +32,12 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
       overflowY="auto"
       top={"0"}
       borderRightWidth={1}
-      borderRightColor={"gray.200"}
+      borderRightColor={colors.border}
     >
       <Box 
         position={"sticky"} 
         top={"0"} 
-        bgColor={"gray.100"} 
+        bgColor={colors.sidebar} 
         paddingY={"0.75rem"}
       >
         <Flex 
@@ -78,20 +79,20 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
           .map((post) => (
             <List.Item key={post.metadata.slug}>
               <Box 
-                bgColor={isMatchingSlug(post.metadata.slug) ? "black" : "none"} 
+                bgColor={isMatchingSlug(post.metadata.slug) ? colors.primary : "none"} 
                 borderRadius={"0.3em"}
                 width={"100%"} 
                 paddingY={"0.25em"}
                 paddingX={"0.5em"}
                 _hover={{
-                  bg: isMatchingSlug(post.metadata.slug) ? "black" : "gray.200"
+                  bg: isMatchingSlug(post.metadata.slug) ? colors.primary : colors.border
                 }}
               >
                 <Link href={`/posts/${post.metadata.slug}`}>
                   <Text 
                     textStyle={"sm"} 
                     fontWeight={"500"} 
-                    color={isMatchingSlug(post.metadata.slug) ? "white" : "black"}
+                    color={isMatchingSlug(post.metadata.slug) ? "white" : { base: "black", _dark: "white"}}
                   >
                     {post.metadata.title}
                   </Text>

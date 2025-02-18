@@ -1,3 +1,4 @@
+import { colors } from "@/colors";
 import { Box, Text } from "@chakra-ui/react";
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 export default function Capsule({ text }: Props) {
   return (
     <Box
-      bgColor={"black"}
+      bgColor={colors.primary}
       paddingY={"0.375em"}
       paddingX={"0.75em"}
       borderRadius={"full"}
