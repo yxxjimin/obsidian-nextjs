@@ -1,0 +1,13 @@
+# Exclude git folder
+.git
+
+# Exclude Next.js build caches
+.next/cache
+.next/standalone
+.next/static
+
+# Exclude node_modules cache or other bulky files if present
+node_modules/.cache
+
+# Exclude logs and other files
+*.log
