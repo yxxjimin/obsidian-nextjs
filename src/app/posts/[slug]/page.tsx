@@ -1,9 +1,9 @@
 import { getAllPosts } from "@/app/posts/utils/parse";
-import { Box, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Separator, Stack, Text } from "@chakra-ui/react";
 // import MarkdownRenderer from "@/app/posts/components/renderer";
 import MDXProvider from "@/app/posts/components/provider";
 import Capsule from "@/app/posts/components/capsule";
-import Header from "@/app/posts/components/header";
+import Header from "@/components/header";
 import Sidebar from "@/app/posts/components/sidebar";
 
 interface Params {
@@ -51,12 +51,12 @@ export default async function Post({ params }: { params: Promise<Params> }) {
             <Text textStyle={"sm"} fontFamily={"mono"}>
               lastmod: {post?.metadata.lastmod}
             </Text>
-            <Stack direction={"row"} marginY={"1em"}>
+            <Stack direction={"row"} marginY={"1em"} wrap={"wrap"}>
               {post?.metadata.tags?.map((tag) => (
                 <Capsule key={tag} text={tag} />
               ))}
             </Stack>
-            <hr />
+            <Separator variant={"dashed"}/>
             <MDXProvider content={post?.content} />
           </Box>
         </Box>

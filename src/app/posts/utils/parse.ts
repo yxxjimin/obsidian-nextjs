@@ -60,5 +60,8 @@ function getMDXData(dir: string): Post[] {
 }
 
 export function getAllPosts(): Post[] {
-  return getMDXData(path.join(process.cwd(), config.paths.contents.root || ""));
+  return getMDXData(path.join(process.cwd(), config.paths.contents.root || ""))
+    .sort((a, b) => (
+      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+    );
 }

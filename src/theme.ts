@@ -1,6 +1,18 @@
 import { createSystem, defaultConfig, defineConfig } from "@chakra-ui/react";
 
 const customConfig = defineConfig({
+  theme: {
+    tokens: {
+      fonts: {
+        body: {
+          value: `'Pretendard'`
+        },
+        mono: {
+          value: `'Fira Code', 'Fira Mono', 'Menlo', 'Consolas'`,
+        },
+      },
+    },
+  },
   globalCss: {
     "pre": {
       fontFamily: ["Fira Code", "Fira Mono", "Menlo", "Consolas", "DejaVu Sans Mono", "monospace"],

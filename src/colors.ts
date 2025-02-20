@@ -13,6 +13,6 @@ export const colors = {
   },
   border: {
     base: "gray.200",
-    _dark: "gray.900"
+    _dark: "gray.700"
   }
 };

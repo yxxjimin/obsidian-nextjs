@@ -20,8 +20,6 @@ export async function GET(request: Request) {
   const mdxDir = path.join(process.cwd(), config.paths.contents.root || "");
   const filePath = path.join(mdxDir, decodedPath);
 
-  console.log(filePath);
-
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ 
       error: `File not fonud: ${filePath}`

@@ -17,7 +17,7 @@ export default function PostCard({ post }: Props) {
         </Card.Body>
         <Card.Footer>
           <Flex direction={"column"}>
-            <Stack direction={"row"} marginY={"1em"}>
+            <Stack direction={"row"} marginY={"1em"} wrap={"wrap"}>
               {post?.metadata.tags?.map((tag) => (
                 <Capsule key={tag} text={tag} />
               ))}

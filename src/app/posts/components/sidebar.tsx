@@ -46,7 +46,7 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
           justifyContent={"space-between"} 
           alignItems={"center"}
         >
-          <Link href={"/posts"}>
+          <Link href={"/"}>
             <Text 
               textStyle={"xl"} 
               fontWeight={"700"} 
