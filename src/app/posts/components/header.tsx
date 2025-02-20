@@ -4,6 +4,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { colors } from "@/colors";
+import config from "@/config";
 
 export default function Header() {
 
@@ -40,7 +41,7 @@ export default function Header() {
           fontWeight={"700"} 
           fontFamily={"mono"}
         >
-          ://yxxjimin
+          {config.siteMetadata.title}
         </Text>
       </Link>
     </Flex>

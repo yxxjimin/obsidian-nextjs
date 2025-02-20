@@ -9,6 +9,7 @@ import { InputGroup } from "@/components/ui/input-group";
 import { LuSearch } from "react-icons/lu";
 import { FaGithub } from "react-icons/fa6";
 import { colors } from "@/colors";
+import config from "@/config";
 
 export default function Sidebar({ posts }: { posts: Post[]; }) {
   const regex = /^\/posts\/([^/]+)$/;
@@ -51,10 +52,10 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
               fontWeight={"700"} 
               fontFamily={"mono"}
             >
-              ://yxxjimin
+              {config.siteMetadata.title}
             </Text>
           </Link>
-          <Link href={"https://github.com/yxxjimin"}>
+          <Link href={`https://github.com/${config.siteMetadata.github}`}>
             <FaGithub size={25} />
           </Link>
         </Flex>

@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import { parse as yamlParse } from "yaml";
+import config from "@/config";
 
 type Metadata = {
   title: string;
@@ -40,6 +41,9 @@ function getMDXFiles(dir: string): string[] {
       return entry.isDirectory() ? getMDXFiles(fullPath) : fullPath;
     })
     .filter((file) => {
+      return !file.includes(config.paths.templates)
+    })
+    .filter((file) => {
       const ext = path.extname(file).toLowerCase();
       return ext === '.md' || ext === '.mdx';
     });
@@ -56,5 +60,5 @@ function getMDXData(dir: string): Post[] {
 }
 
 export function getAllPosts(): Post[] {
-  return getMDXData(path.join(process.cwd(), process.env.CONTENTS_DIRECTORY || ""));
+  return getMDXData(path.join(process.cwd(), config.paths.contents || ""));
 }

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
+import config from "@/config";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -16,7 +17,7 @@ export async function GET(request: Request) {
 
   const decodedPath = decodeURIComponent(relativePath);
 
-  const mdxDir = path.join(process.cwd(), process.env.CONTENTS_DIRECTORY || "");
+  const mdxDir = path.join(process.cwd(), config.paths.contents || "");
   const filePath = path.join(mdxDir, decodedPath);
 
   console.log(filePath);
