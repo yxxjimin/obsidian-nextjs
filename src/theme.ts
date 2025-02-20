@@ -16,6 +16,7 @@ const customConfig = defineConfig({
     "code:not(:is(pre *))": {
       whiteSpace: "normal",
       color: "gray.900",
+      fontSize: "0.9em",
       fontWeight: "600",
       _after: {
         content: '"`"',

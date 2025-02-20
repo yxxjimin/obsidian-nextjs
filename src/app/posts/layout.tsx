@@ -25,6 +25,7 @@ export default async function PostLayout({
         <Box 
           as="main"
           marginX={"auto"}
+          width={"100%"}
           maxWidth={"48em"}
           overflowWrap={"break-word"}
         >
