@@ -24,7 +24,6 @@ export default function Header() {
   return (
     <Flex
       as={"header"}
-      hideFrom={"lg"}
       position={"sticky"}
       top={"0"}
       bgColor={colors.background}
