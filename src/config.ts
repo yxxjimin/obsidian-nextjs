@@ -4,8 +4,14 @@ const config = {
     github: `yxxjimin`
   },
   paths: {
-    contents: `contents/`,
-    templates: `contents/_templates/`,
+    contents: {
+      root: `contents`,
+      static: `_static`,
+    },
+    ignore: [
+      `contents/_templates/`,
+      `contents/.obsidian/`,
+    ],
   }
 }
 

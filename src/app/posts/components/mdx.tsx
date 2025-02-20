@@ -9,6 +9,7 @@ import {
 import React, { ComponentProps, JSX } from 'react';
 import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
+import config from "@/config";
 
 const components = {
   h1: (props: JSX.IntrinsicElements["h1"]) => (
@@ -106,7 +107,7 @@ const components = {
   img: (props: JSX.IntrinsicElements["img"]) => {
     let imageUrl = props.src;
     if (props.src?.startsWith(".")) {
-      const regex = /.*?(_static\/.+)/;
+      const regex = new RegExp(`.*?(${config.paths.contents.static}\/.+)`);
       const match = props.src.match(regex) || [];
       imageUrl = `/api/mdx-image?path=${encodeURIComponent(match[1])}`;
     }

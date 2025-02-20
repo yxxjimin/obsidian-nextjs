@@ -41,7 +41,7 @@ function getMDXFiles(dir: string): string[] {
       return entry.isDirectory() ? getMDXFiles(fullPath) : fullPath;
     })
     .filter((file) => {
-      return !file.includes(config.paths.templates)
+      return !config.paths.ignore.some((path) => file.includes(path));
     })
     .filter((file) => {
       const ext = path.extname(file).toLowerCase();
@@ -60,5 +60,5 @@ function getMDXData(dir: string): Post[] {
 }
 
 export function getAllPosts(): Post[] {
-  return getMDXData(path.join(process.cwd(), config.paths.contents || ""));
+  return getMDXData(path.join(process.cwd(), config.paths.contents.root || ""));
 }

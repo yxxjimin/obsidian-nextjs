@@ -17,7 +17,7 @@ export async function GET(request: Request) {
 
   const decodedPath = decodeURIComponent(relativePath);
 
-  const mdxDir = path.join(process.cwd(), config.paths.contents || "");
+  const mdxDir = path.join(process.cwd(), config.paths.contents.root || "");
   const filePath = path.join(mdxDir, decodedPath);
 
   console.log(filePath);
