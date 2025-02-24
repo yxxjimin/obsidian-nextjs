@@ -1,10 +1,12 @@
 "use client";
 
-import { Button, Stack, Text } from "@chakra-ui/react";
+import { Button, Flex, HStack, Stack, Text } from "@chakra-ui/react";
 import { Post } from "@/app/posts/utils/parse"
 import PostCard from "@/app/posts/components/postcard";
 import { useState } from "react";
 import { colors } from "@/colors";
+import { useSearchParams } from "next/navigation";
+import { PaginationItems, PaginationNextTrigger, PaginationPrevTrigger, PaginationRoot } from "@/components/ui/pagination";
 
 type Props = {
   posts: Post[];
@@ -24,7 +26,26 @@ function getTagsCnt(posts: Post[]) {
 
 export default function PostList({ posts }: Props) {
   const tagsCnt = getTagsCnt(posts);
-  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+  const searchParams = useSearchParams();
+  const searchParamTag = searchParams.get("q");
+  const initialTags = searchParamTag 
+    ? new Set<string>([searchParamTag]) 
+    : new Set<string>();
+
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(initialTags);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const postsPerPage = 10;
+
+  // Filter posts based on selected tags
+  const filteredPosts = posts.filter((post) => (
+    selectedTags.size === 0 
+      ? true 
+      : post.metadata.tags?.some((tag) => selectedTags.has(tag))
+  ));
+
+  // Paginate
+  const totalPosts = filteredPosts.length;
+  const paginatedPosts = filteredPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
 
   return (
     <>
@@ -36,19 +57,16 @@ export default function PostList({ posts }: Props) {
             borderColor={colors.border}
             borderRadius={"full"}
             onClick={() => {
-              if (selectedTags.has(tag)) {
-                setSelectedTags((prev) => {
-                  const newSet = new Set(prev);
+              setSelectedTags((prev) => {
+                const newSet = new Set(prev);
+                if (newSet.has(tag)) {
                   newSet.delete(tag);
-                  return newSet;
-                })
-              } else {
-                setSelectedTags((prev) => {
-                  const newSet = new Set(prev);
+                } else {
                   newSet.add(tag);
-                  return newSet;
-                })
-              }
+                }
+                setCurrentPage(1);
+                return newSet;
+              });
             }}
           >
             <Text 
@@ -68,14 +86,24 @@ export default function PostList({ posts }: Props) {
           </Button>
         ))}
       </Stack>
-      {posts
-      .filter((post) => {
-        if (selectedTags.size === 0) return true;
-        return post.metadata.tags?.some((tag) => (selectedTags.has(tag)))
-      })
-      .map((post) => (
+      {paginatedPosts.map((post) => (
         <PostCard key={post.metadata.title} post={post} />
       ))}
+      <Flex justifyContent={"center"} marginTop={"1em"}>
+        <PaginationRoot
+          page={currentPage}
+          count={totalPosts}
+          pageSize={postsPerPage}
+          onPageChange={(e) => setCurrentPage(e.page)}
+          variant={"solid"}
+        >
+          <HStack>
+            <PaginationPrevTrigger />
+            <PaginationItems />
+            <PaginationNextTrigger />
+          </HStack>
+        </PaginationRoot>
+      </Flex>
     </>
   );
 }

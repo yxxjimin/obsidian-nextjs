@@ -53,7 +53,7 @@ export default async function Post({ params }: { params: Promise<Params> }) {
             </Text>
             <Stack direction={"row"} marginY={"1em"} wrap={"wrap"}>
               {post?.metadata.tags?.map((tag) => (
-                <Capsule key={tag} text={tag} />
+                <Capsule key={tag} text={tag} href={`/posts?q=${tag}`}/>
               ))}
             </Stack>
             <Separator variant={"dashed"}/>
