@@ -2,6 +2,7 @@ import { Flex, Text } from "@chakra-ui/react";
 import { getAllPosts } from "@/app/posts/utils/parse";
 import Header from "@/components/header";
 import PostList from "@/app/posts/components/postlist";
+import { Suspense } from "react";
 
 export default function Page() {
   const posts = getAllPosts();
@@ -24,7 +25,9 @@ export default function Page() {
         >
           Posts
         </Text>
-        <PostList posts={posts} />
+        <Suspense>
+          <PostList posts={posts} />
+        </Suspense>
       </Flex>
     </>
   );
