@@ -26,7 +26,7 @@ const components = {
       as="h2" 
       size="2xl" 
       fontWeight={700} 
-      marginTop="1em" 
+      marginTop="2em" 
       marginBottom="1em" 
       {...props} 
     />
@@ -123,7 +123,7 @@ const components = {
           borderRadius={"lg"}
           src={imageUrl}
           alt={props.alt}
-          maxHeight={300}
+          maxHeight={400}
         />
         <Text
           as="figcaption"

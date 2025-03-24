@@ -94,6 +94,9 @@ export default function Sidebar({ posts }: { posts: Post[]; }) {
                     textStyle={"sm"} 
                     fontWeight={"500"} 
                     color={isMatchingSlug(post.metadata.slug) ? "white" : { base: "black", _dark: "white"}}
+                    whiteSpace={"nowrap"}
+                    overflow={"hidden"}
+                    textOverflow={"ellipsis"}
                   >
                     {post.metadata.title}
                   </Text>
