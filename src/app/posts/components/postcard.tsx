@@ -23,7 +23,7 @@ export default function PostCard({ post }: Props) {
               ))}
             </Stack>
             <Text textStyle={"sm"} color={"gray.400"}>
-              {post.metadata.date}
+              {post.metadata.lastmod}
             </Text>
           </Flex>
         </Card.Footer>

@@ -48,9 +48,6 @@ export default async function Post({ params }: { params: Promise<Params> }) {
                 {post?.metadata.title}
               </Text>
               <Text textStyle={"sm"} fontFamily={"mono"}>
-                written: {post?.metadata.date}
-              </Text>
-              <Text textStyle={"sm"} fontFamily={"mono"}>
                 lastmod: {post?.metadata.lastmod}
               </Text>
               <Stack direction={"row"} marginY={"1em"} wrap={"wrap"}>

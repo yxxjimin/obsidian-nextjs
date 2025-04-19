@@ -5,7 +5,6 @@ import config from "@/config";
 
 type Metadata = {
   title: string;
-  date: string;
   lastmod: string;
   slug: string;
   tags?: string[];
@@ -62,6 +61,6 @@ function getMDXData(dir: string): Post[] {
 export function getAllPosts(): Post[] {
   return getMDXData(path.join(process.cwd(), config.paths.contents.root || ""))
     .sort((a, b) => (
-      new Date(b.metadata.date).getTime() - new Date(a.metadata.date).getTime())
+      new Date(b.metadata.lastmod).getTime() - new Date(a.metadata.lastmod).getTime())
     );
 }
