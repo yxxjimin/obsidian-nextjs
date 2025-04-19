@@ -3,6 +3,8 @@ import components from "@/app/posts/components/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeShiki from "@shikijs/rehype";
 import wikiLinkPlugin from "remark-wiki-link";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 export default async function MDXProvider({ content }: { content: string | undefined }) {
   return (
@@ -20,6 +22,7 @@ export default async function MDXProvider({ content }: { content: string | undef
                 aliasDivider: '|',
               }
             ],
+            remarkMath,
           ],
           rehypePlugins: [
             [
@@ -32,6 +35,7 @@ export default async function MDXProvider({ content }: { content: string | undef
                 skipLanguages: [],
               }
             ],
+            rehypeKatex,
           ],
         },
       }}

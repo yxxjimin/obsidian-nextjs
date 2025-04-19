@@ -1,13 +1,15 @@
 import {
+  Blockquote,
   Box, 
   Em, 
   Heading, 
   Image, 
+  Separator, 
   Span, 
   Text 
 } from "@chakra-ui/react";
 import React, { ComponentProps, JSX } from 'react';
-import Callout from "@/components/ui/callout";
+// import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
 import config from "@/config";
 
@@ -15,30 +17,33 @@ const components = {
   h1: (props: JSX.IntrinsicElements["h1"]) => (
     <Heading 
       as="h1" 
-      size="3xl" 
+      fontSize={"2rem"}
       fontWeight={700} 
       {...props} 
     />
   ),
 
   h2: (props: JSX.IntrinsicElements["h2"]) => (
-    <Heading 
-      as="h2" 
-      size="2xl" 
-      fontWeight={700} 
-      marginTop="2em" 
-      marginBottom="1em" 
-      {...props} 
-    />
+    <>
+      <Heading 
+        as="h2" 
+        fontSize={"1.5rem"}
+        fontWeight={700} 
+        marginTop="2rem" 
+        marginBottom="0.25rem" 
+        {...props} 
+      />
+      <Separator marginBottom={"1rem"} />
+    </>
   ),
 
   h3: (props: JSX.IntrinsicElements["h3"]) => (
     <Heading 
       as="h3"
-      size="xl" 
+      fontSize={"1.25rem"} 
       fontWeight={700} 
-      marginTop="1em" 
-      marginBottom="1em" 
+      marginTop="2rem" 
+      marginBottom="1rem" 
       {...props} 
     />
   ),
@@ -55,9 +60,9 @@ const components = {
     }
     return (
       <Text 
-        fontSize={16} 
-        my="1em" 
-        lineHeight="1.7" 
+        fontSize={"1rem"} 
+        my="1rem" 
+        lineHeight="1.75" 
         {...props} 
       />
     );
@@ -140,7 +145,10 @@ const components = {
 
   blockquote: (props: JSX.IntrinsicElements["blockquote"]) => (
     // TODO: max-width not working
-    <Callout type="default" title="">{props.children}</Callout>
+    // <Callout type="default" title="">{props.children}</Callout>
+    <Blockquote.Root variant="solid">
+      <Blockquote.Content {...props} />
+    </Blockquote.Root>
   ),
 };
 

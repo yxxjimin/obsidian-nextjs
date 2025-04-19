@@ -6,6 +6,7 @@ import Capsule from "@/app/posts/components/capsule";
 import Header from "@/components/header";
 import Sidebar from "@/app/posts/components/sidebar";
 import MotionDiv from "@/app/posts/components/motion";
+import "katex/dist/katex.min.css";
 
 interface Params {
   slug: string;
