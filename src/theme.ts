@@ -4,9 +4,6 @@ const customConfig = defineConfig({
   theme: {
     tokens: {
       fonts: {
-        // body: {
-        //   value: `'Pretendard', 'Inter', 'sans-serif'`
-        // },
         mono: {
           value: `'Fira Code', 'Fira Mono', 'Menlo', 'Consolas'`,
         },
@@ -47,7 +44,7 @@ const customConfig = defineConfig({
       _before: {
         content: '"["',
       },
-      color: "blue.500",
+      color: "black",
     },
     ".footnotes": {
       marginTop: "2em",

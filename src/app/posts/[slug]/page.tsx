@@ -1,10 +1,10 @@
 import { getAllPosts } from "@/app/posts/utils/parse";
-import { Box, Flex, Separator, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Stack, Text } from "@chakra-ui/react";
 // import MarkdownRenderer from "@/app/posts/components/renderer";
 import MDXProvider from "@/app/posts/components/provider";
 import Capsule from "@/app/posts/components/capsule";
 import Header from "@/components/header";
-import Sidebar from "@/app/posts/components/sidebar";
+// import Sidebar from "@/app/posts/components/sidebar";
 import MotionDiv from "@/app/posts/components/motion";
 import "katex/dist/katex.min.css";
 
@@ -31,7 +31,7 @@ export default async function Post({ params }: { params: Promise<Params> }) {
         <Header />
       </Box>
       <Flex>
-        <Sidebar posts={posts} />
+        {/* <Sidebar posts={posts} /> */}
         <Box 
           as="main"
           marginX={"auto"}
@@ -48,15 +48,15 @@ export default async function Post({ params }: { params: Promise<Params> }) {
               <Text textStyle={"2xl"} fontWeight={"700"} marginY={"1em"}>
                 {post?.metadata.title}
               </Text>
-              <Text textStyle={"sm"} fontFamily={"mono"}>
-                lastmod: {post?.metadata.lastmod}
-              </Text>
               <Stack direction={"row"} marginY={"1em"} wrap={"wrap"}>
                 {post?.metadata.tags?.map((tag) => (
                   <Capsule key={tag} text={tag} href={`/posts?q=${tag}`}/>
                 ))}
               </Stack>
-              <Separator variant={"dashed"}/>
+              <Text textStyle={"sm"} fontFamily={"mono"}>
+                lastmod: {post?.metadata.lastmod}
+              </Text>
+              {/* <Separator variant={"dashed"}/> */}
               <MDXProvider content={post?.content} />
             </Box>
           </MotionDiv>

@@ -9,7 +9,7 @@ import {
   Text 
 } from "@chakra-ui/react";
 import React, { ComponentProps, JSX } from 'react';
-// import Callout from "@/components/ui/callout";
+import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
 import config from "@/config";
 
@@ -33,7 +33,11 @@ const components = {
         marginBottom="0.25rem" 
         {...props} 
       />
-      <Separator marginBottom={"1rem"} />
+      <Separator 
+        marginBottom={"1rem"} 
+        borderColor={"black"} 
+        _dark={{borderColor: "white"}}
+      />
     </>
   ),
 
@@ -62,7 +66,7 @@ const components = {
       <Text 
         fontSize={"1rem"} 
         my="1rem" 
-        lineHeight="1.75" 
+        lineHeight="1.75"
         {...props} 
       />
     );
@@ -104,14 +108,14 @@ const components = {
 
   a: (props: ComponentProps<typeof NextLink>) => (
     // props of type `JSX.IntrinsicElements["li"]` will break the link
-    <Span color="blue.500" fontWeight={600}>
+    <Span color="black" fontWeight={600} textDecoration={"underline"}>
       <NextLink {...props} />
     </Span>
   ),
 
   img: (props: JSX.IntrinsicElements["img"]) => {
     let imageUrl = props.src;
-    if (props.src?.startsWith(".")) {
+    if (typeof props.src === "string" && props.src?.startsWith(".")) {
       const regex = new RegExp(`.*?(${config.paths.contents.static}\/.+)`);
       const match = props.src.match(regex) || [];
       imageUrl = `/api/mdx-image?path=${encodeURIComponent(match[1])}`;
@@ -144,12 +148,12 @@ const components = {
   },
 
   blockquote: (props: JSX.IntrinsicElements["blockquote"]) => (
-    // TODO: max-width not working
-    // <Callout type="default" title="">{props.children}</Callout>
-    <Blockquote.Root variant="solid">
-      <Blockquote.Content {...props} />
+    <Blockquote.Root variant="solid" marginY={"1rem"}>
+      <Blockquote.Content {...props} marginY={"-1rem"}/>
     </Blockquote.Root>
   ),
+
+  Callout,
 };
 
 export default components;

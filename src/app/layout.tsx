@@ -3,10 +3,13 @@ import { Provider } from "@/components/ui/provider";
 import { Box, Flex } from "@chakra-ui/react";
 import { colors } from "@/colors";
 import { ColorModeButton } from "@/components/ui/color-mode";
+import localFont from 'next/font/local';
 
 export const metadata: Metadata = {
   title: "://yxxjimin",
 };
+
+const font = localFont({ src: '../static/PretendardVariable.woff2' });
 
 export default function RootLayout({
   children,
@@ -14,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning>
+    <html className={font.className} suppressHydrationWarning>
       <body>
         <Provider>
           <Flex
