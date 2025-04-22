@@ -6,6 +6,7 @@ import {
   Image, 
   Separator, 
   Span, 
+  Table, 
   Text 
 } from "@chakra-ui/react";
 import React, { ComponentProps, JSX } from 'react';
@@ -151,6 +152,30 @@ const components = {
     <Blockquote.Root variant="solid" marginY={"1rem"}>
       <Blockquote.Content {...props} marginY={"-1rem"}/>
     </Blockquote.Root>
+  ),
+
+  table: (props: JSX.IntrinsicElements["table"]) => (
+    <Table.Root my="2rem" {...props} interactive />
+  ),
+  
+  thead: (props: JSX.IntrinsicElements["thead"]) => (
+    <Table.Header {...props} />
+  ),
+  
+  tbody: (props: JSX.IntrinsicElements["tbody"]) => (
+    <Table.Body {...props} />
+  ),
+  
+  tr: (props: JSX.IntrinsicElements["tr"]) => (
+    <Table.Row {...props} />
+  ),
+  
+  th: (props: JSX.IntrinsicElements["th"]) => (
+    <Table.ColumnHeader fontWeight={600} {...props} />
+  ),
+  
+  td: (props: JSX.IntrinsicElements["td"]) => (
+    <Table.Cell {...props} />
   ),
 
   Callout,
