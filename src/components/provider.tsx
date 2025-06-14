@@ -1,5 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import components from "@/app/posts/components/mdx";
+import components from "@/components/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeShiki from "@shikijs/rehype";
 import wikiLinkPlugin from "remark-wiki-link";

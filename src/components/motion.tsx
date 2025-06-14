@@ -1,6 +1,6 @@
 import * as motion from "motion/react-client";
 
-export default async function MotionDiv({
+export async function MotionDiv({
   children,
 }: {
   children: React.ReactNode;

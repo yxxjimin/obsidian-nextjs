@@ -1,4 +1,4 @@
-import Header from "@/components/header";
+import { Header } from "@/components/header";
 import { Button, Flex, Text } from "@chakra-ui/react";
 import { FaArrowRight } from "react-icons/fa6";
 import Link from "next/link";
@@ -18,7 +18,7 @@ export default function Home() {
         <Text fontSize={"4xl"} fontFamily={"mono"} fontWeight={700}>
           {"👋 Hi!"}
         </Text>
-        <Link href={"/posts"}>
+        <Link href={"/page"}>
           <Button 
             borderRadius={"full"}
             bgColor={colors.primary}

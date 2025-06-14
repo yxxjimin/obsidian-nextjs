@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
-import config from "@/config";
+import { config } from "@/config";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

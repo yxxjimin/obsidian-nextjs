@@ -1,4 +1,4 @@
-const config = {
+export const config = {
   siteMetadata: {
     title: `://yxxjimin`,
     github: `yxxjimin`
@@ -13,6 +13,4 @@ const config = {
       `contents/.obsidian/`,
     ],
   }
-}
-
-export default config;
+};

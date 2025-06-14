@@ -12,7 +12,7 @@ import {
 import React, { ComponentProps, JSX } from 'react';
 import Callout from "@/components/ui/callout";
 import NextLink from "next/link";
-import config from "@/config";
+import { config } from "@/config";
 
 const components = {
   h1: (props: JSX.IntrinsicElements["h1"]) => (
@@ -81,8 +81,8 @@ const components = {
     <ul
       style={{
         marginLeft: "1.5em",
-        marginTop: "1em",
-        marginBottom: "1em",
+        marginTop: "2em",
+        marginBottom: "2em",
         listStyleType: "disc",
       }}
       {...props}
@@ -93,8 +93,8 @@ const components = {
     <ol
       style={{
         marginLeft: "1.5em",
-        marginTop: "1em",
-        marginBottom: "1em",
+        marginTop: "2em",
+        marginBottom: "2em",
         listStyleType: "decimal",
       }}
       {...props}
@@ -149,7 +149,7 @@ const components = {
   },
 
   blockquote: (props: JSX.IntrinsicElements["blockquote"]) => (
-    <Blockquote.Root variant="solid" marginY={"1rem"}>
+    <Blockquote.Root variant="solid" marginY={"2rem"}>
       <Blockquote.Content {...props} marginY={"-1rem"}/>
     </Blockquote.Root>
   ),

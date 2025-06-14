@@ -18,7 +18,7 @@ const customConfig = defineConfig({
       whiteSpace: "pre",
       wordBreak: "normal",
       padding: "1em",
-      margin: "1em 0",
+      margin: "2em 0",
       overflow: "auto",
       borderRadius: "0.5em",
     },
