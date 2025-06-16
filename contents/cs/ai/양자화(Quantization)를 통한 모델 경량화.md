@@ -49,7 +49,8 @@ $$
 
 이때 $(q - Z) \cdot S$가 원래 값 $W$에 가장 근접해질 수 있도록 하는 $S, Z$ 값을 찾는 것이 관건이 된다. 따라서 $S$와 $Z$를 각각 아래와 같이 설정한다.
 
-$$\begin{align}
+$$
+\begin{align}
 S &= \frac{W_{\max} - W_{\min}}{q_{\max} - q_{\min}} \\
 Z &= \text{round}(q_{\min} - \frac{W_{\min}}{S})
 \end{align}
