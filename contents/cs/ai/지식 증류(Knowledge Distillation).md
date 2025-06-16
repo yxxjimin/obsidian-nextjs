@@ -1,7 +1,7 @@
 ---
-lastmod: 2025-06-16 
-tags: 
-  - example
+lastmod: 2025-06-16
+tags:
+  - ai
 ---
 
 > 인공지능시스템, "Week 12. Knowledge Distillation," CAS 3400, 2025.[^1]
